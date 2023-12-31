@@ -17,6 +17,7 @@
 	import { ToastNode } from '$lib/utils/show-toast';
 	import Footer from '$lib/components/Footer/Footer.svelte';
 	import ThemeSwitch from '$lib/components/ThemeSwitch/ThemeSwitch.svelte';
+	import { base } from '$app/paths';
 
 	onMount(async () => {
 		$user.loadFromCookie(document.cookie);
@@ -47,7 +48,7 @@
 	<div class="flex flex-col min-w-screen flex-1">
 		<div class="navbar z-1">
 			<div class="flex">
-				<a href="/" class="btn btn-ghost normal-case text-xl">grimoire</a>
+				<a href="{base}/" class="btn btn-ghost normal-case text-xl">grimoire</a>
 			</div>
 			<div class="navbar-center flex-1">
 				<div class="form-control flex mx-auto w-10/12 join join-horizontal">
@@ -68,8 +69,8 @@
 				<ThemeSwitch />
 				{#if !$user.isValid}
 					<ul class="menu menu-horizontal px-1">
-						<li><a href="/signup">Sign up</a></li>
-						<li><a href="/login">Login</a></li>
+						<li><a href="{base}/signup">Sign up</a></li>
+						<li><a href="{base}/login">Login</a></li>
 					</ul>
 				{:else if $user.isValid && $user.isAdmin}
 					<form
@@ -96,12 +97,12 @@
 							class="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-auto gap-2"
 						>
 							<li>
-								<a href="/profile" class="justify-between">
+								<a href="{base}/profile" class="justify-between">
 									Profile
 									<!-- <span class="badge">New</span> -->
 								</a>
 							</li>
-							<li><a href="/settings">Settings</a></li>
+							<li><a href="{base}/settings">Settings</a></li>
 							<form
 								method="POST"
 								action="/logout"
@@ -134,7 +135,7 @@
 					<div class="drawer-side min-w-screen min-h-full">
 						<div class="flex flex-col items-end justify-center h-14">
 							{#if $page.url.pathname !== '/'}
-								<a href="/" class="link">{'< Back to Home'}</a>
+								<a href="{base}/" class="link">{'< Back to Home'}</a>
 							{/if}
 						</div>
 						<label for="my-drawer-2" class="drawer-overlay" />
@@ -157,7 +158,7 @@
 								<div class="flex flex-wrap p-2">
 									{#each $page.data.tags as tag (tag.id)}
 										{#if tag.bookmarks.length > 0}
-											<a href={`/tags/${tag.slug}`} class="link m-1 hover:text-secondary"
+											<a href={`{base}/tags/${tag.slug}`} class="link m-1 hover:text-secondary"
 												>#{tag.name}</a
 											>
 										{/if}

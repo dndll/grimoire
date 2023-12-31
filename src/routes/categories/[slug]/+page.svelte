@@ -8,6 +8,8 @@
 	import type { Bookmark } from '$lib/types/Bookmark.type';
 	import type { Category } from '$lib/types/Category.type';
 
+	import { base } from '$app/paths';
+
 	let slug: string;
 	let category: Category | undefined;
 	let bookmarks: Bookmark[] = [];
@@ -45,7 +47,7 @@
 			<div class="flex items-center gap-1">
 				<strong>Parent:</strong>
 				{#if category?.parent}
-					<a href={`/categories/${category.parent.slug}`} class="link">{category.parent.name}</a>
+					<a href={`{base}/categories/${category.parent.slug}`} class="link">{category.parent.name}</a>
 				{:else}
 					<em class="text-sm">No parent.</em>
 				{/if}

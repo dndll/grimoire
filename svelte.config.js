@@ -17,6 +17,10 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
+		paths: {
+			base: process.env.BASE,
+			relative: process.env.BASE != '' ? false : true
+		},
 		version: { name: PKG.version }
 	}
 };

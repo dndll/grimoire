@@ -3,6 +3,7 @@
 
 	import { page } from '$app/stores';
 	import { user } from '$lib/pb';
+	import { base } from '$app/paths';
 
 	const accountCreated = new Date($user.model?.created || '').toLocaleDateString();
 	const addedInLastSevenDays = $page.data.bookmarks.filter(
@@ -121,7 +122,7 @@
 					<p>No bookmarks yet.</p>
 				{/if}
 				<div class="card-actions justify-end mt-4">
-					<a href="/profile/edit" class="btn btn-primary">Edit Profile</a>
+					<a href="{base}/profile/edit" class="btn btn-primary">Edit Profile</a>
 				</div>
 			</div>
 		</div>

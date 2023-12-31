@@ -4,6 +4,7 @@
 
 	import { page } from '$app/stores';
 	import type { Bookmark } from '$lib/types/Bookmark.type';
+	import { base } from '$app/paths';
 	import {
 		IconLayout2,
 		IconListDetails,
@@ -184,8 +185,8 @@
 	<div class="flex flex-col items-center justify-center h-full">
 		<h1 class="text-2xl">Grimoire welcomes!</h1>
 		<p class="text-lg">
-			Please <a href="/login" class="link">login</a> or
-			<a href="/signup" class="link">signup</a>
+			Please <a href="{base}/login" class="link">login</a> or
+			<a href="{base}/signup" class="link">signup</a>
 			to see your bookmarks
 		</p>
 	</div>

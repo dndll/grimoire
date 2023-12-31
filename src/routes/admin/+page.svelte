@@ -6,6 +6,7 @@
 	import { IconInfoCircle, IconLock, IconLockOpen, IconTrash } from '@tabler/icons-svelte';
 	import { showToast } from '$lib/utils/show-toast';
 	import { enhance } from '$app/forms';
+	import { base } from '$app/paths';
 
 	export let data: PageData;
 	const activeTab = writable('Users');
@@ -26,7 +27,7 @@
 {#if !$user.isAdmin}
 	<div class="flex flex-col gap-4 h-full w-full items-center justify-center">
 		<span> You are not logged in as admin. </span>
-		<a href="/admin/login" class="btn btn-primary">Go to admin login page</a>
+		<a href="{base}/admin/login" class="btn btn-primary">Go to admin login page</a>
 	</div>
 {:else}
 	<div class="flex flex-col w-full gap-4">
