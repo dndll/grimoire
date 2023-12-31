@@ -2,10 +2,14 @@ import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
+import { loadEnv } from 'vite'
 
 const packagePath = fileURLToPath(new URL('package.json', import.meta.url));
 const packageJson = readFileSync(packagePath, 'utf-8');
 const PKG = JSON.parse(packageJson);
+
+/** @type {import('./src/lib/utils/vite.js').BuildEnv} */
+const env = loadEnv(process.env['NODE_ENV'] ?? 'development', process.cwd())
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -18,8 +22,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		paths: {
-			base: process.env.BASE,
-			relative: process.env.BASE != '' ? false : true
+			base: env.VITE_BASE,
 		},
 		version: { name: PKG.version }
 	}

@@ -7,7 +7,7 @@ export default {
 	BACKEND_URL:
 		env.PUBLIC_POCKETBASE_URL ||
 		getProcessEnvValue('PUBLIC_POCKETBASE_URL') ||
-		'http://localhost:8090',
+		'http://localhost:5174',
 	POCKETBASE_URL:
 		env.PUBLIC_POCKETBASE_URL ||
 		getProcessEnvValue('PUBLIC_POCKETBASE_URL') ||
